@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - chis.digital</title>
+      {% else %}
+      <title>chis.digital</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>chis.digital: <a href="{{ url_for('index') }}">Home</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
