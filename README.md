@@ -4,3 +4,5 @@ This website was created with the micro framework Flask, by following the mega f
 
 I was able to adapt it to the needs of a small personal blog page. I used a bootstrap template for the design.
 
+The website is hosted on a DigitalOcean Droplet which can be found [here](https://chis.digital)
+
