@@ -10,7 +10,7 @@ from app.models import User, Post
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        post = Post(body=form.post.data, title=form.title.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
@@ -57,9 +57,23 @@ def edit_post(id):
     form = PostForm()
     if form.validate_on_submit():
         post.body = form.post.data
+        post.title = form.title.data
         db.session.commit()
         flash("Changes made")
         return redirect(url_for('index'))
     elif request.method == "GET":
         form.post.data = post.body
+        form.title.data = post.title
     return render_template('edit_post.html', title='Edit Post', form=form)
+
+
+@app.route('/delete_post/<id>')
+@login_required
+def delete_post(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+
+

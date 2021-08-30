@@ -9,6 +9,8 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 class PostForm(FlaskForm):
-    post = TextAreaField('Say something', validators=[
+    title = StringField(validators=[
+        DataRequired()])
+    post = TextAreaField(validators=[
         DataRequired()])
     submit = SubmitField('Submit')
