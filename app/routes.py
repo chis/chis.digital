@@ -15,9 +15,16 @@ def index():
         db.session.commit()
         flash('Your post is now live!')
         return redirect(url_for('index'))
-    posts = Post.query.order_by(Post.id.desc()).all()
-    return render_template("index.html", title='Home Page', form=form,
-                           posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.id.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('index', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('index', page=posts.prev_num) \
+        if posts.has_prev else None
+    return render_template('index.html', title='Home', form=form,
+                           posts=posts.items, next_url=next_url,
+                           prev_url=prev_url)
 
 @app.route('/a', methods=['GET', 'POST'])
 def a():
@@ -43,3 +50,16 @@ def logout():
 
 
     
+@app.route('/edit_post/<id>', methods=['GET', 'POST'])
+@login_required
+def edit_post(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    form = PostForm()
+    if form.validate_on_submit():
+        post.body = form.post.data
+        db.session.commit()
+        flash("Changes made")
+        return redirect(url_for('index'))
+    elif request.method == "GET":
+        form.post.data = post.body
+    return render_template('edit_post.html', title='Edit Post', form=form)

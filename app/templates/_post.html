@@ -1,0 +1,7 @@
+
+<div>
+{{ post.body }}
+</div>
+{% if current_user.is_authenticated %} 
+<p><a href="{{ url_for('edit_post', id=post.id) }}">Edit</a></p>
+{% endif %}
