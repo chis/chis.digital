@@ -74,6 +74,8 @@ def delete_post(id):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('index'))
+ 
+
 
 
 

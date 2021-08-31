@@ -7,6 +7,8 @@ import logging
 from logging.handlers import RotatingFileHandler
 import os
 from flask_bootstrap import Bootstrap
+from datetime import datetime
+from jinja2 import environment
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -29,4 +31,7 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('chis.digital startup')
 
-from app import routes, models, errors
+
+from app import routes, models, errors, jinja_filters
+
+app.jinja_env.globals.update(datetime_format=jinja_filters.datetime_format)
