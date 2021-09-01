@@ -50,7 +50,7 @@ def logout():
 
 
     
-@app.route('/edit_post/<id>', methods=['GET', 'POST'])
+@app.route('/edit_post/<id>/', methods=['GET', 'POST'])
 @login_required
 def edit_post(id):
     post = Post.query.filter_by(id=id).first_or_404()
