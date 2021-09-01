@@ -3,12 +3,12 @@ Following the mega flask tutorial created by Miguel Grinberg I have implemented 
 
 The website is hosted on a DigitalOcean Droplet which can be found [here](https://chis.digital)
 
-## So Far..
+## So Far
 - Login, with one single account (me).
 - Create / Delete / Edit posts.
 - View current and previos posts.
 
-### Todo
+## Todo
 - Group posts by month.
 - Post search.
 - See page numbers with paginate.
