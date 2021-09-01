@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel= "stylesheet" type= "text/css" href= "static/css/bs_blog.css">
         {% if title %}
-        <title>{{ title }} - chis.digital</title>
+          <title>{{ title }} - chis.digital</title>
         {% else %}
-        <title>chis.digital</title>
+          <title>chis.digital</title>
         {% endif %}
     </head>
 
@@ -18,32 +18,31 @@
 <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-                      <a class="blog-nav-item active" href="{{ url_for('index') }}">Home</a>
-                      <a class="blog-nav-item active" href="https://github.com/chis">github</a>
-                {% if current_user.is_anonymous %}
-                {% else %}
-                  <a class="blog-nav-item active" href="{{ url_for('logout') }}">Logout</a>
-                {% endif %}
-
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
+          <a class="blog-nav-item active" href="{{ url_for('index') }}">Home</a>
+          <a class="blog-nav-item active" href="https://github.com/chis">github</a>
+            {% if current_user.is_anonymous %}
+            {% else %}
+              <a class="blog-nav-item active" href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul>
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+              </ul>
+              {% endif %}
         {% endwith %}
         </nav>
       </div>
     </div>
 
     <div class="container">
-
       <div class="blog-header">
         <h1 class="blog-title">chis.digital</h1>
+        <hr>
       </div>
         {% block content %}{% endblock %}
-    
     </body>
 </html>
