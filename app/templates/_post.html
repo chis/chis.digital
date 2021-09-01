@@ -1,13 +1,13 @@
 <div class="row">
-<div class="col-sm-8 blog-main">
-<h2 class="blog-post-title">{{ post.title }}</h2>
-<div class="blog-post">{{ post.body }}
+    <div class="col-sm-8 blog-main">
+    <h2 class="blog-post-title">{{ post.title }}</h2>
+        <div class="blog-post">{{ post.body }}<br>
+<i><a href="mailto:{{ post.author.email }}">{{ post.author.username}}</a> at {{ datetime_format(post.timestamp) }} </i>
+        </div>
+    </div>
 </div>
-</div>
-<a href="mailto:{{ post.author.email }}">{{ post.author.username}}</a> at {{ datetime_format(post.timestamp) }} 
-<br>
 {% if current_user.is_authenticated %} 
-<p>
     <a href="{{ url_for('delete_post', id=post.id) }}">Delete</a>
-    <a href="{{ url_for('edit_post', id=post.id) }}">Edit</a></p>
+    <a href="{{ url_for('edit_post', id=post.id) }}">Edit</a>
 {% endif %}
+
