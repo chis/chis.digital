@@ -74,7 +74,20 @@ def delete_post(id):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('index'))
- 
+
+
+@app.route('/post/<id>/')
+def view_post(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    title = post.title
+    if post == None:
+        redirect(url_for('index'))
+    return render_template('view_post.html', title=title, post=post)
+        
+
+
+
+
 
 
 
