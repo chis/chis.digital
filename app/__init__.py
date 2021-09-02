@@ -32,4 +32,5 @@ if not app.debug:
 
 from app import routes, models, errors, jinja_filters
 
+# Set custom functions to call through jinja2 templates.
 app.jinja_env.globals.update(datetime_format=jinja_filters.datetime_format)

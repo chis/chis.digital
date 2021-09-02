@@ -6,7 +6,7 @@ The website is hosted on a DigitalOcean Droplet which can be found [here](https:
 ## So Far
 - Login, with one single account (me).
 - Create / Delete / Edit posts.
-- View current and previos posts.
+- View current and previous posts.
 
 ## Todo
 - Group posts by month.
