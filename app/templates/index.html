@@ -21,6 +21,7 @@
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}
+    <p>
     {% if prev_url %}
     <a href="{{ prev_url }}">Newer posts >></a>
     {% endif %}

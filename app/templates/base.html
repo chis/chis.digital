@@ -16,8 +16,11 @@
     <body>
 
 <div class="blog-masthead">
+
       <div class="container">
+
         <nav class="blog-nav">
+
           <a class="blog-nav-item active" href="{{ url_for('index') }}">Home</a>
           <a class="blog-nav-item active" href="https://github.com/chis">github</a>
             {% if current_user.is_anonymous %}
@@ -35,20 +38,29 @@
               {% endif %}
         {% endwith %}
         </nav>
-      </div>
-    </div>
+
+      </div> <!-- /.blog-post -->
+
+    </div> <!-- /.blog-main -->
 
     <div class="container">
+
       <div class="blog-header">
+
         <div class="row">
+
           <div class="col-sm-8 blog-main">
             <h1 class="blog-title">chis.digital</h1>
               <p class="lead blog-description">A place of confusion.</p>
             </div>
+
               <hr>
                 {% block content %}{% endblock %}
         </div>
-      </div>
-    </div>
+
+      </div> <!-- /.row -->
+
+    </div> <!-- /.container -->
+
     </body>
 </html>
