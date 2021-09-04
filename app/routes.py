@@ -10,11 +10,15 @@ from app.models import User, Post
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, title=form.title.data, author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post is now live!')
-        return redirect(url_for('index'))
+        if current_user.is_authenticated:
+            post = Post(body=form.post.data, title=form.title.data, author=current_user)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your post is now live!')
+            return redirect(url_for('index'))
+        else:
+            flash("Illegal action!")
+            return redirect(url_for('index'))
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.id.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)

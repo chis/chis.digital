@@ -25,6 +25,7 @@
           <a class="blog-nav-item active" href="{{ url_for('index') }}">Home</a>
           <a class="blog-nav-item active" href="https://github.com/chis">github</a>
             {% if current_user.is_anonymous %}
+            <a class="blog-nav-item active" href="{{ url_for('a') }}">Login</a>
             {% else %}
               <a class="blog-nav-item active" href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
