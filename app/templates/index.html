@@ -9,7 +9,7 @@
         <p>
             {{ form.title(cols=150) }}
             {{ form.post.label }}<br>
-            {{ form.post(cols=150, rows=7) }}<br>
+            {{ form.post(cols=80, rows=4) }}<br>
             {% for error in form.post.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}

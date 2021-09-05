@@ -87,6 +87,7 @@ def view_post(id):
     if post == None:
         redirect(url_for('index'))
     return render_template('view_post.html', title=title, post=post)
+
         
 
 
