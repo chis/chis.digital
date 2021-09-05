@@ -68,7 +68,7 @@ def edit_post(id):
     elif request.method == "GET":
         form.post.data = post.body
         form.title.data = post.title
-    return render_template('edit_post.html', title='Edit Post', form=form)
+    return render_template('edit_post.html', title='Edit Post: {}'.format(post.title), form=form)
 
 
 @app.route('/delete_post/<id>')
@@ -80,20 +80,17 @@ def delete_post(id):
     return redirect(url_for('index'))
 
 
-@app.route('/post/<id>/')
+@app.route('/post/<id>')
 def view_post(id):
     post = Post.query.filter_by(id=id).first_or_404()
-    title = post.title
     if post == None:
         redirect(url_for('index'))
-    return render_template('view_post.html', title=title, post=post)
+    return render_template('view_post.html', title=post.title, post=post)
 
         
-
-
-
-
-
-
+@app.route('/archive', methods=['GET', 'POST'])
+def archive():
+    return render_template('archive.html', title='Archives')
+        
 
 

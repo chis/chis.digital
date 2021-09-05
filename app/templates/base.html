@@ -22,13 +22,13 @@
 
         <nav class="blog-nav">
 
-          <a class="blog-nav-item active" href="{{ url_for('index') }}">Home</a>
+          <a class="blog-nav-item active" href="{{ url_for('index') }}">home</a>
+          <a class="blog-nav-item active" href="{{ url_for('archive') }}">archive</a>
           <a class="blog-nav-item active" href="https://github.com/chis">github</a>
-          <a class="blog-nav-item-active" href="#">Archive</a>
             {% if current_user.is_anonymous %}
-            <a class="blog-nav-item active" href="{{ url_for('a') }}">Login</a>
+            <a class="blog-nav-item active" href="{{ url_for('a') }}">login</a>
             {% else %}
-              <a class="blog-nav-item active" href="{{ url_for('logout') }}">Logout</a>
+              <a class="blog-nav-item active" href="{{ url_for('logout') }}">logout</a>
             {% endif %}
 
             {% with messages = get_flashed_messages() %}
