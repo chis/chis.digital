@@ -4,6 +4,9 @@ from app import app, db
 from app.forms import LoginForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
+from datetime import datetime
+# custom function
+from app.generate_unique_list import generate_unique_list
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -90,7 +93,9 @@ def view_post(id):
         
 @app.route('/archive', methods=['GET', 'POST'])
 def archive():
-    return render_template('archive.html', title='Archives')
-        
-
-
+    posts = Post.query.order_by(Post.id.desc()).all()
+    each_post_as_year = []
+    for post in posts:
+        each_post_as_year.append(post.timestamp.strftime('%Y'))
+    each_year = generate_unique_list(each_post_as_year)
+    return render_template('archive.html', title='Archives', years=each_year)
