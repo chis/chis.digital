@@ -99,3 +99,23 @@ def archive():
         each_post_as_year.append(post.timestamp.strftime('%Y'))
     each_year = generate_unique_list(each_post_as_year)
     return render_template('archive.html', title='Archives', years=each_year)
+
+@app.route('/archive/<year>')
+def archive_year(year):
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    each_post_as_month = []
+    for post in posts:
+        if post.timestamp.strftime('%Y') == year:
+            each_post_as_month.append(post.timestamp.strftime('%B'))
+    each_month = generate_unique_list(each_post_as_month)
+    return render_template('archive_year.html', title='Posts for {}'.format(year), months=each_month, year=year)
+
+
+@app.route('/archive_posts/<year>/<month>', methods=['GET', 'POST'])
+def archive_posts(year, month):
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    selected_posts = []
+    for post in posts:
+        if post.timestamp.strftime('%Y') == year and post.timestamp.strftime('%B') == month:
+            selected_posts.append(post.body)
+    return render_template('archive_year_month.html', title="Posts for {} of {}".format(month, year), posts=selected_posts)
