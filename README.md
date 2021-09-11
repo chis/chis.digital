@@ -29,6 +29,17 @@ flask db init
 flask db migrate -m "First migration"
 flask db upgrade
 ```
+### Add a user to login with
+```bash
+flask shell
+>>> u = User(username="yourname", email="youremail")
+>>> db.session.add(u)
+>>> db.session.commit()
+>>> u = User.query.get(1)
+>>> u.set_password("yourpassword")
+>>> db.session.add(u)
+>>> db.session.commit()
+```
 ### Run application
 ```bash
 flask run
