@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="blog-post-title">Monthly posts for {{ year }}</h2>
+<a href="{{url_for('archive')}}"><</a>
+<br>
+{% for month in months %}
+    <a href="{{url_for('archive_posts', year=year, month=month)}}">{{ month }}</a>
+    <br>        
+{% endfor %}
+{% endblock %}

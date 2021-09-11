@@ -3,7 +3,6 @@ from datetime import datetime
 from app import db, login
 from flask_login import UserMixin
 
-date_now = datetime(2020, 5, 5)
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -24,7 +23,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(64), index=True, unique=True)
     body = db.Column(db.Text)
-    timestamp = db.Column(db.DateTime, index=True, default=date_now)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
