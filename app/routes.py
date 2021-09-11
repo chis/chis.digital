@@ -117,5 +117,6 @@ def archive_posts(year, month):
     selected_posts = []
     for post in posts:
         if post.timestamp.strftime('%Y') == year and post.timestamp.strftime('%B') == month:
-            selected_posts.append(post.body)
-    return render_template('archive_year_month.html', title="Posts for {} of {}".format(month, year), posts=selected_posts)
+            selected_posts.append(post.id)
+    post_ids = Post.query.filter(Post.id.in_(selected_posts)).all()
+    return render_template('archive_year_month.html', title="Posts for {} of {}".format(month, year), posts=post_ids)

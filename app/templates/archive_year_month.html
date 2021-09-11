@@ -2,8 +2,7 @@
 
 {% block content %}
     {% for post in posts %}
-        {{post}}
-        <br>
+        {% include "_post.html" %}
     {% endfor %}
 
 {% endblock %}
