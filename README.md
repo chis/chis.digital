@@ -7,13 +7,13 @@ There is still some functionality I would like to add, but in the meantime here 
 
 # Install
 
-### Create a virtual environment
-```bash
-python -m venv venv
-```
 ### Clone repository
 ```bash
 git clone git@github.com:chis/chis.digital.git
+```
+### Create a virtual environment
+```bash
+python -m venv venv
 ```
 ### Source environment
 ```bash
