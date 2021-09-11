@@ -3,15 +3,33 @@ Following the mega flask tutorial created by Miguel Grinberg I have implemented 
 
 The website is hosted on a DigitalOcean Droplet which can be found [here](https://chis.digital)
 
-## So Far
-- Login, with one single account (me).
-- Create / Delete / Edit posts.
-- View current and previous posts.
+There is still some functionality I would like to add, but in the meantime here is the installation instructions if you would like to test it yourself.
 
-## Todo
-- Group posts by month.
-- Post search.
-- See page numbers with paginate.
-- Prettier design.
-- Formatted posts.
+# Install
 
+### Create a virtual environment
+```bash
+python -m venv venv
+```
+### Clone repository
+```bash
+git clone git@github.com:chis/chis.digital.git
+```
+### Source environment
+```bash
+source venv/bin/activate
+```
+### Install requirements
+```bash
+pip install -r requirements.txt
+```
+### Initialise flask-sqlalchemy database
+```bash
+flask db init
+flask db migrate -m "First migration"
+flask db upgrade
+```
+### Run application
+```bash
+flask run
+```
