@@ -6,6 +6,7 @@ from flask_login import LoginManager
 import logging
 from logging.handlers import RotatingFileHandler
 import os
+from flaskext.markdown import Markdown
 
 
 
@@ -15,6 +16,7 @@ login = LoginManager(app)
 login.login_view = 'login'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+Markdown(app)
 
 if not app.debug:
     if not os.path.exists('logs'):
